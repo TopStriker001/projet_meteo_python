@@ -22,11 +22,21 @@ def get_weather(lat, lon):
     return response.json()["current"]
 
 
+def display_weather(name, weather):
+    """Affiche la météo de façon lisible."""
+    print("\n" + "=" * 30)
+    print(f"  Météo à {name}")
+    print("=" * 30)
+    print(f"  Température : {weather['temperature_2m']} °C")
+    print(f"  Vent        : {weather['wind_speed_10m']} km/h")
+    print("=" * 30 + "\n")
+
+
 def main():
     city = input("Ville : ")
     lat, lon, name = get_coordinates(city)
     weather = get_weather(lat, lon)
-    print(name, weather)
+    display_weather(name, weather)
 
 if __name__ == "__main__":
     main()
